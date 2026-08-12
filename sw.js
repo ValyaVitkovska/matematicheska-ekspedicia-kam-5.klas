@@ -1,4 +1,4 @@
-const CACHE_NAME='math-expedition-v4';
+const CACHE_NAME='math-expedition-v6';
 const APP_SHELL=[
   './',
   './index.html',
@@ -7,7 +7,9 @@ const APP_SHELL=[
   './apple-touch-icon.png',
   './icon-192.png',
   './icon-512.png',
-  './author-logo.png'
+  './author-logo.png',
+  './geo-start.png',
+  './geo-explorer.png'
 ];
 
 self.addEventListener('install',event=>{
