@@ -1,4 +1,4 @@
-const CACHE_NAME='math-expedition-v5';
+const CACHE_NAME='math-expedition-v11';
 const APP_SHELL=[
   './',
   './index.html',
@@ -8,6 +8,7 @@ const APP_SHELL=[
   './icon-192.png',
   './icon-512.png',
   './author-logo.png',
+  './geo-start.png',
   './geo-explorer.png'
 ];
 
