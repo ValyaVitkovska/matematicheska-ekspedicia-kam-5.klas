@@ -290,6 +290,7 @@ const TaskGen={
    if(d<=0){a=ri(21,399);b=ri(2,9)}
    else if(d===1){a=ri(24,249);b=this.nonRoundTwoDigit(12,39)}
    else{a=ri(37,499);b=this.nonRoundTwoDigit(21,98)}
+   if(b>a)[a,b]=[b,a];
    let ans=a*b,units=b%10,tens=Math.floor(b/10);
    return {title:'✖️ Умножение',q:`${a} × ${b} = ?`,ans,work:{kind:'multiplication',a,b},hint:b>=10?`Първо умножи ${a} по ${units}, после по ${tens}. Второто частично произведение запиши с една позиция наляво и събери.`:'Умножавай последователно по разреди и провери крайния резултат.',solution:b>=10?`${a} × ${units} = ${a*units}; ${a} × ${tens} = ${a*tens}, записано с една позиция наляво; ${a} × ${b} = ${ans}.`:`${a} × ${b} = ${ans}.`,context:d<=0?'Започни с едноцифрен множител и работи спокойно по разреди.':'Извърши писменото умножение и подреди частичните произведения по разреди.'}
  },
@@ -396,7 +397,9 @@ const TaskUI={modal:document.getElementById('taskModal'),title:document.getEleme
  addNotebookRow(grid,cols,row,value,shift,classes,editable){let s=String(value),end=cols-shift,start=end-s.length;for(let c=0;c<cols;c++){let cell=document.createElement('div');cell.className='notebook-cell';cell.style.gridRow=row;cell.style.gridColumn=String(c+2);if(c>=start&&c<end){let ch=s[c-start];if(editable)cell.appendChild(this.makeRequiredInput(ch,classes));else{let span=document.createElement('span');span.className='notebook-static-digit';span.textContent=ch;cell.appendChild(span)}}grid.appendChild(cell)}},
  renderMultiplication(w){
    let first=Number(w.a),second=Number(w.b),ans=String(w.result??this.task.ans);
+   if([10,100,1000].includes(first)&&![10,100,1000].includes(second))[first,second]=[second,first];
    if([10,100,1000].includes(second)){this.renderPowerOfTen({...w,a:first,b:second});return}
+   if(first<second)[first,second]=[second,first];
 
    if(second>=10&&second<=99&&second%10!==0){
      const units=second%10,tensDigit=Math.floor(second/10),partialUnits=String(first*units),partialTens=String(first*tensDigit);
