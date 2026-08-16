@@ -1,4 +1,4 @@
-const CACHE_NAME='math-expedition-v27';
+const CACHE_NAME='math-expedition-v28';
 const APP_SHELL=[
   './',
   './index.html',
